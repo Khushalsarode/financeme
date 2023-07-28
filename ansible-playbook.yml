@@ -11,6 +11,12 @@
 
   - name : Start Docker Service
     command : sudo systemctl start docker
+    
+  - name : stop the running conatiner
+    shell : docker stop $(docker ps -a -q)
 
+  - name: remmove that conatiner stop
+    shell : docker rm $(docker ps -a -q)
+    
   - name: Deploy Docker Container
     command: docker run -itd -p 8084:8081 khushalsarode/financeme:1.0
